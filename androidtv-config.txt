@@ -1,0 +1,82 @@
+# Kernel
+arm_64bit=1
+kernel=Image
+
+# Ramdisk
+initramfs ramdisk.img followkernel
+
+# Audio
+dtparam=audio=on
+
+# Audio DAC
+#dtoverlay=hifiberry-dacplus
+
+# Bluetooth
+dtparam=krnbt=on
+
+# Boot device
+dtoverlay=android-sdcard
+#dtoverlay=android-usb
+
+# Camera
+camera_auto_detect=1
+start_x=1
+dtoverlay=tc358743
+
+# Display
+disable_overscan=1
+display_auto_detect=1
+
+# Fan
+#dtoverlay=gpio-fan
+#dtoverlay=i2c-fan
+#dtoverlay=rpi-poe
+#dtoverlay=rpi-poe-plus
+
+# Graphics acceleration
+dtoverlay=vc4-kms-v3d
+dtoverlay=cma,cma-512
+
+# I2C
+dtparam=i2c_arm=on
+
+# I2S
+#dtparam=i2s=on
+
+# IR
+#dtoverlay=gpio-ir,gpio_pin=18
+
+# Keys
+#dtoverlay=gpio-key,gpio=21,keycode=116,label="POWER"
+#dtoverlay=gpio-key,gpio=26,keycode=115,label="VOLUME_UP"
+#dtoverlay=gpio-key,gpio=20,keycode=114,label="VOLUME_DOWN"
+
+# Overclock
+over_voltage=2
+arm_freq=1750
+
+# RTC
+#dtoverlay=i2c-rtc,ds3231
+
+# Sensors
+#dtoverlay=android-i2c-sensor,mpu6050
+
+# Serial console
+#enable_uart=1
+
+# SPI
+#dtparam=spi=on
+
+# Touchscreen
+#dtoverlay=ads7846,cs=1,penirq=25,penirq_pull=2,speed=50000,keep_vref_on=0,swapxy=0,pmax=255,xohms=150,xmin=200,xmax=3900,ymin=200,ymax=3900
+#dtoverlay=edt-ft5406
+#dtoverlay=goodix
+#dtoverlay=rpi-ft5406
+
+# USB
+dtoverlay=dwc2,dr_mode=peripheral
+[cm4]
+dtoverlay=dwc2,dr_mode=otg
+[all]
+
+include config_user.txt

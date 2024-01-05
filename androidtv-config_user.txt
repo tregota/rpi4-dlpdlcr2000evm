@@ -1,0 +1,18 @@
+# User specific config.txt options
+
+# Add support for software i2c on gpio pins
+dtoverlay=i2c-gpio,bus=1,i2c_gpio_sda=23,i2c_gpio_scl=24,i2c_gpio_delay_us=2
+
+# init vc3-kms-dpi-generic overlay with dlp2000 parameters
+dtoverlay=vc4-kms-dpi-generic,clock-frequency=25000000
+dtparam=hactive=640,hfp=14,hsync=4,hbp=12
+dtparam=vactive=360,vfp=2,vsync=3,vbp=9
+
+# dont forget to run these commands on boot
+# sudo i2cset -y 1 0x1b 0x0c 0x00 0x00 0x00 0x1B i
+# sudo i2cset -y 1 0x1b 0x0b 0x00 0x00 0x00 0x00 i
+
+# I've added this to /etc/init/hw/init.rc at the end of "on early-init"
+#    # tell dlp to switch input
+#    exec - root root -- /vendor/bin/i2cset -y 1 0x1b 0x0c 0x00 0x00 0x00 0x1B i
+#    exec - root root -- /vendor/bin/i2cset -y 1 0x1b 0x0b 0x00 0x00 0x00 0x00 i
