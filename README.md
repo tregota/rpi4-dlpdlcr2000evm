@@ -59,7 +59,7 @@ initramfs ramdisk.img followkernel
 
 The second hurdle is that the old dpi config above only works with vc4-fkms-v3d while I now had to use the newer vc4-kms-v3d
 
-These new settings worked though:
+[These new settings from the ti forums](https://e2e.ti.com/support/dlp-products-group/dlp/f/dlp-products-forum/1281455/dlpdlcr2000evm-raspberry-pi-configuration-using-dtoverlay-vc4-kms-dpi-generic-raspberry-pi-os-12-bookworm) worked though:
 ```
 # Add support for software i2c on gpio pins
 dtoverlay=i2c-gpio,bus=1,i2c_gpio_sda=23,i2c_gpio_scl=24,i2c_gpio_delay_us=2
